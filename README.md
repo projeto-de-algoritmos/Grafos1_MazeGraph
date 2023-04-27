@@ -1,4 +1,4 @@
-# RunningFromSR
+# GrafosBeecrowd
 
 **Conteúdo da Disciplina**: GRAFOS 1<br>
 ## Alunos
