@@ -1,21 +1,47 @@
+import 'dart:math';
+import 'package:app/components/pixel_painter.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-class GamePage extends StatelessWidget {
-  const GamePage({super.key});
+class GamePage extends StatefulWidget {
+  final List<List<Color>> cenarioMatrix;
+
+  const GamePage({
+    super.key,
+    required this.cenarioMatrix,
+  });
+
+  @override
+  State<GamePage> createState() => _GamePageState();
+}
+
+class _GamePageState extends State<GamePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Game Page")),
-        leading: const BackButton(
-            /* onPressed: () => GoRouter.of(context).pop(), */
-            ),
+    return GestureDetector(
+      onTap: () {
+        final column = Random().nextInt(5);
+        final row = Random().nextInt(5);
+        setState(() {
+          widget.cenarioMatrix[row][column] = Colors.blue;
+        });
+      },
+      child: /*  Stack(
+        children: [ */
+          CustomPaint(
+        painter: PixelPainter(widget.cenarioMatrix),
       ),
-      body: const Center(
-        child: Text("Game Page"),
-      ),
+
+      //!Not working
+      /* const RiveAnimation.asset('assets/personagem_2.riv', animations: [
+            "Walk sem livro",
+          ]), 
+        ],
+      ),*/
     );
   }
 }
