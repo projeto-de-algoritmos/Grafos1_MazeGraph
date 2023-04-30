@@ -1,7 +1,25 @@
+import 'package:app/components/matriz.dart';
+import 'package:app/controller/personage_controller.dart';
+import 'package:app/data_structures/lista_de_adjacencia.dart';
 import 'package:app/utils/routes.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+PersonagemController personagemPositionController =
+    PersonagemController(initialCharposition);
+
+late Tuple2<ListaDeAdjacencia<Color>, List<List<Color>>> matriz;
+
+void main() async {
+  matriz = createMatrizDeAdjacenciaEDecolor(
+    30,
+    30,
+    Colors.black,
+    const Tuple2(1, 1),
+    const Tuple2(28, 28),
+  );
+  await Future.delayed(const Duration(seconds: 5));
+  await personagemPositionController.runBFS();
   runApp(const MainApp());
 }
 
