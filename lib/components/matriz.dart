@@ -118,10 +118,12 @@ Tuple2<ListaDeAdjacencia<Color>, List<List<Color>>>
     print(e);
   }
 
-  //if (linha == 0 || coluna == 0 || linha == linhas - 1 ||coluna == colunas - 1)
-  //! Preenche a matriz com as Cores marcantes
   matriz[posicaoInicial.head][posicaoInicial.tail] = Colors.red;
-  matriz[posicaoFinal.head][posicaoFinal.tail] = Colors.yellow;
+  listaDeAdjacencia.updateVertice(
+      Tuple2(posicaoInicial.head, posicaoInicial.tail), Colors.red);
+  matriz[posicaoFinal.tail][posicaoFinal.tail] = Colors.yellow;
+  listaDeAdjacencia.updateVertice(
+      Tuple2(posicaoFinal.head, posicaoFinal.tail), Colors.yellow);
 
   print(
       "Quatidade de arestas: ${listaDeAdjacencia.quatidadeDeAresta()} Quantidade de nós: ${listaDeAdjacencia.vertices.length}");

@@ -51,6 +51,13 @@ class _GamePageState extends State<GamePage> {
       child: ValueListenableBuilder(
           valueListenable: personagemPositionController,
           builder: (context, snapshot, child) {
+            var qtd = 0;
+            final persona = widget.cenarioMatrix.forEach((element) {
+              if (element.contains(Colors.red)) {
+                qtd++;
+              }
+            });
+            print("Quantidade de personagens na tela: $qtd");
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: widget.cenarioMatrix.length, // Column
