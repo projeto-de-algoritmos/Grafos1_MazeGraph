@@ -10,6 +10,7 @@ late PersonagemController personagemPositionController;
 late Tuple2<ListaDeAdjacencia<Color>, List<List<Color>>> matriz;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   matriz = createMatrizDeAdjacenciaEDecolor(
     30,
     30,
@@ -20,7 +21,8 @@ void main() async {
   await Future.delayed(const Duration(seconds: 5));
   personagemPositionController =
       PersonagemController(initialCharposition, matriz.value2);
-  await personagemPositionController.runBFS();
+  await personagemPositionController.possuiCaminhoQuandoRodaBFS();
+
   runApp(const MainApp());
 }
 

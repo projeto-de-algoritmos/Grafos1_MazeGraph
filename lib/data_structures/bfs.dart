@@ -60,8 +60,11 @@ extension BreadthFirstSearchWithFinal<E> on Grafo<E> {
         if (u == null) {
           print("temos um problema");
         }
+        if (obterArestas(u!).isEmpty) {
+          print("Lista de arestas vazia para o vertice: $u");
+        }
         // para cada aresta (a) na lista de adjacencia[u]
-        for (Aresta<E> a in obterArestas(u!)) {
+        for (Aresta<E> a in obterArestas(u)) {
           // se aresta não for explorado
           if (!arestasVisitadas.contains(a)) {
             // marca como visitado o vertice e a aresta

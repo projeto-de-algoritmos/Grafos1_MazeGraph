@@ -7,6 +7,12 @@ import 'package:flutter/material.dart';
 const initialCharposition = Tuple2(1, 1);
 const winGamePosition = Tuple2(28, 28);
 
+final lastVertice = Vertice(
+  indexX: winGamePosition.head,
+  indexY: winGamePosition.tail,
+  dado: Colors.yellow,
+);
+
 class PersonagemController extends ValueNotifier<Tuple2<int, int>> {
   PersonagemController(super.value, this.colorMatriz);
   List<List<Color>> colorMatriz;
@@ -18,19 +24,25 @@ class PersonagemController extends ValueNotifier<Tuple2<int, int>> {
     value = Tuple2(x, y);
   }
 
-  Future<void> runBFS() async {
-    print("Acheiiiiiiiiiiii o grafooo");
+  Future<bool> possuiCaminhoQuandoRodaBFS() async {
+    final lastVertice = Vertice(
+      indexX: winGamePosition.head,
+      indexY: winGamePosition.tail,
+      dado: Colors.yellow,
+    );
     solvedGrafo = await matriz.value1.breadthFirstSearchWithFinal(
         Vertice(
           indexX: initialCharposition.head,
           indexY: initialCharposition.tail,
           dado: Colors.red,
         ),
-        Vertice(
-          indexX: winGamePosition.head,
-          indexY: winGamePosition.tail,
-          dado: Colors.yellow,
-        ));
+        lastVertice);
+
+    if (solvedGrafo!.contains(lastVertice)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void comecaAandar() async {
@@ -44,6 +56,7 @@ class PersonagemController extends ValueNotifier<Tuple2<int, int>> {
           "Posição anterior: $oldPosition ${colorMatriz[oldPosition.value1][oldPosition.value2]} | Posicao Atual: ${vertice.indexX} x ${vertice.indexY} ${colorMatriz[vertice.indexX][vertice.indexY]}"); */
       oldPosition = Tuple2(vertice.indexX, vertice.indexY);
       await Future.delayed(const Duration(milliseconds: 100));
+      if (vertice == lastVertice) break;
     }
   }
 }
