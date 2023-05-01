@@ -5,12 +5,12 @@ import 'package:app/utils/routes.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-PersonagemController personagemPositionController =
-    PersonagemController(initialCharposition);
+late PersonagemController personagemPositionController;
 
 late Tuple2<ListaDeAdjacencia<Color>, List<List<Color>>> matriz;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   matriz = createMatrizDeAdjacenciaEDecolor(
     30,
     30,
@@ -19,7 +19,10 @@ void main() async {
     const Tuple2(28, 28),
   );
   await Future.delayed(const Duration(seconds: 5));
-  await personagemPositionController.runBFS();
+  personagemPositionController =
+      PersonagemController(initialCharposition, matriz.value2);
+  await personagemPositionController.possuiCaminhoQuandoRodaBFS();
+
   runApp(const MainApp());
 }
 
@@ -29,9 +32,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        routerDelegate: router.routerDelegate,
-        routeInformationProvider: router.routeInformationProvider,
-        routeInformationParser: router.routeInformationParser);
+      debugShowCheckedModeBanner: false,
+      routerDelegate: router.routerDelegate,
+      routeInformationProvider: router.routeInformationProvider,
+      routeInformationParser: router.routeInformationParser,
+    );
   }
 }

@@ -5,10 +5,18 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
 const initialCharposition = Tuple2(1, 1);
-const winGamePosition = Tuple2(29, 29);
+const winGamePosition = Tuple2(28, 28);
+
+final lastVertice = Vertice(
+  indexX: winGamePosition.head,
+  indexY: winGamePosition.tail,
+  dado: Colors.yellow,
+);
 
 class PersonagemController extends ValueNotifier<Tuple2<int, int>> {
-  PersonagemController(super.value);
+  PersonagemController(super.value, this.colorMatriz);
+  List<List<Color>> colorMatriz;
+  Tuple2<int, int> oldPosition = const Tuple2(1, 1);
 
   late List<Vertice<Color>>? solvedGrafo;
 
@@ -16,25 +24,39 @@ class PersonagemController extends ValueNotifier<Tuple2<int, int>> {
     value = Tuple2(x, y);
   }
 
-  Future<void> runBFS() async {
-    print("Acheiiiiiiiiiiii o grafooo");
-    solvedGrafo = await matriz.value1.breadthFirstSearch(
+  Future<bool> possuiCaminhoQuandoRodaBFS() async {
+    final lastVertice = Vertice(
+      indexX: winGamePosition.head,
+      indexY: winGamePosition.tail,
+      dado: Colors.yellow,
+    );
+    solvedGrafo = await matriz.value1.breadthFirstSearchWithFinal(
         Vertice(
-            indexX: initialCharposition.head,
-            indexY: initialCharposition.tail,
-            dado: Colors.red),
-        Vertice(
-            indexX: winGamePosition.head,
-            indexY: winGamePosition.tail,
-            dado: Colors.yellow));
+          indexX: initialCharposition.head,
+          indexY: initialCharposition.tail,
+          dado: Colors.red,
+        ),
+        lastVertice);
+
+    if (solvedGrafo!.contains(lastVertice)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  Future<void> comecaAandar() async {
-    for (var vertice in solvedGrafo!) {
-      await Future.delayed(const Duration(seconds: 1));
-      print(
-          "Andou no ${vertice.indexX} x ${vertice.indexY} : Tamanho: $solvedGrafo");
-      personagemPositionController.update(vertice.indexX, vertice.indexY);
+  void comecaAandar() async {
+    Tuple2 oldPosition = const Tuple2(1, 1);
+    for (Vertice<Color> vertice in solvedGrafo!) {
+      //Se ele ta na posição inicial não alteramos nada
+      colorMatriz[oldPosition.value1][oldPosition.value2] = Colors.transparent;
+      colorMatriz[vertice.indexX][vertice.indexY] = Colors.red;
+      update(vertice.indexX, vertice.indexY);
+      /* print(
+          "Posição anterior: $oldPosition ${colorMatriz[oldPosition.value1][oldPosition.value2]} | Posicao Atual: ${vertice.indexX} x ${vertice.indexY} ${colorMatriz[vertice.indexX][vertice.indexY]}"); */
+      oldPosition = Tuple2(vertice.indexX, vertice.indexY);
+      await Future.delayed(const Duration(milliseconds: 100));
+      if (vertice == lastVertice) break;
     }
   }
 }

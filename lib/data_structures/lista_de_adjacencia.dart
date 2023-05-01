@@ -1,29 +1,46 @@
+import 'package:dartz/dartz.dart';
+
 import 'aresta.dart';
 import 'grafo.dart';
 import 'vertices.dart';
 
 /// Espaço alocado: O(n + m), Adicionar Vertice: O(1), Adicionar Aresta: O(1), Encontrar Arestas e Vertices: O(n)
 class ListaDeAdjacencia<E> implements Grafo<E> {
-  final Map<Vertice<E>, List<Aresta<E>>> _conecoes = {};
+  Map<Vertice<E>, List<Aresta<E>>> conecoes = {};
 
   int quatidadeDeAresta() {
     var qtd = 0;
-    for (var element in _conecoes.values) {
+    for (var element in conecoes.values) {
       qtd += element.length;
     }
     return qtd;
   }
 
+  bool updateVertice(Tuple2<int, int> pos, E newValue) {
+    try {
+      var vertice = conecoes.keys.firstWhere((vertice) =>
+          vertice.indexX == pos.value1 && vertice.indexY == pos.value2);
+
+      final arestas = conecoes.remove(vertice);
+
+      conecoes[vertice]?.addAll(arestas!);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   @override
 
   /// Para obter as arestas, caso seja nulo retorna [ ]
-  Iterable<Vertice<E>> get vertices => _conecoes.keys;
+  Iterable<Vertice<E>> get vertices => conecoes.keys;
 
   @override
 
   /// Para obter as arestas, caso seja nulo retorna [ ]
   List<Aresta<E>> obterArestas(Vertice<E> inicio) {
-    return _conecoes[inicio] ?? [];
+    final conect = conecoes[inicio];
+    return conecoes[inicio] ?? [];
   }
 
   @override
@@ -34,7 +51,7 @@ class ListaDeAdjacencia<E> implements Grafo<E> {
       dado: dado,
     );
 
-    _conecoes[vertice] = [];
+    conecoes[vertice] = [];
     return vertice;
   }
 
@@ -46,11 +63,12 @@ class ListaDeAdjacencia<E> implements Grafo<E> {
     double? peso,
   }) {
     // adicionamos a aresta com base no vertice de inicio -> destino
-    _conecoes[inicio]
-        ?.add(Aresta(inicio: inicio, destino: destino, peso: peso));
+    conecoes[inicio]?.add(Aresta(inicio: inicio, destino: destino, peso: peso));
+
+    /* print(conecoes); */
     // Caso o Grafo seja não direcionado add aresta destino -> inicio
     if (tipoDeAresta == TipoDeAresta.naoDirecionado) {
-      _conecoes[destino]
+      conecoes[destino]
           ?.add(Aresta(inicio: destino, destino: inicio, peso: peso));
     }
   }
@@ -70,7 +88,7 @@ class ListaDeAdjacencia<E> implements Grafo<E> {
   String toString() {
     final result = StringBuffer();
 
-    _conecoes.forEach((vertice, arestas) {
+    conecoes.forEach((vertice, arestas) {
       final destinos = arestas.map((aresta) {
         return aresta.destino;
       }).join('| ');
