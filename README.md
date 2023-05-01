@@ -12,16 +12,13 @@ MazeGraph é um software que busca mostrar visualmente o funcionamento dos algor
 
 ## Screenshots
 
-Descrição                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://user-images.githubusercontent.com/60429513/235533881-8e17f087-87bb-4b86-a457-ea68a83d2d2f.png" alt="drawing" width="240"/> | 
-| <img src="https://user-images.githubusercontent.com/60429513/235533880-91b3c0bc-a25a-4ff5-b3f3-82f0481294c4.png" alt="drawing" width="240"/> |
-| <img src="https://user-images.githubusercontent.com/60429513/235533888-8dc59ff8-1228-4f5b-a40c-171f6de217ec.png" alt="drawing" width="240"/> | 
-| <img src="https://user-images.githubusercontent.com/60429513/235533886-f0dcf0d1-4113-4f8b-99db-cf5554a551ad.png" alt="drawing" width="240"/> | 
+| -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://user-images.githubusercontent.com/60429513/235533881-8e17f087-87bb-4b86-a457-ea68a83d2d2f.png" alt="drawing" width="400"/> |  <img src="https://user-images.githubusercontent.com/60429513/235533880-91b3c0bc-a25a-4ff5-b3f3-82f0481294c4.png" alt="drawing" width="400"/> |
+| <img src="https://user-images.githubusercontent.com/60429513/235533888-8dc59ff8-1228-4f5b-a40c-171f6de217ec.png" alt="drawing" width="400"/> |  <img src="https://user-images.githubusercontent.com/60429513/235533886-f0dcf0d1-4113-4f8b-99db-cf5554a551ad.png" alt="drawing" width="400"/> | 
 
 ## Video de apresetação
 
-<iframe width="300" height="200" src="https://www.youtube.com/watch?v=SzvQlCdPtmc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SzvQlCdPtmc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Instalação 
 **Linguagem**: Dart<br>
