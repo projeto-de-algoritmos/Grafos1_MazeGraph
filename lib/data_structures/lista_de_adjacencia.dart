@@ -38,9 +38,15 @@ class ListaDeAdjacencia<E> implements Grafo<E> {
   @override
 
   /// Para obter as arestas, caso seja nulo retorna [ ]
-  List<Aresta<E>> obterArestas(Vertice<E> inicio) {
-    final conect = conecoes[inicio];
-    return conecoes[inicio] ?? [];
+  List<Aresta<E>> obterArestas(Vertice<E> vertice) {
+    late List<Aresta<E>> curentAresta;
+    final conect = conecoes.forEach((key, value) {
+      if (key == vertice) {
+        curentAresta = value;
+        /* print("Current Aresta: $curentAresta"); */
+      }
+    });
+    return conecoes[vertice] ?? [];
   }
 
   @override
