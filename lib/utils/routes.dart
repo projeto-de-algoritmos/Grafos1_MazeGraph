@@ -9,7 +9,6 @@ final router = GoRouter(routes: [
       path: '/game',
       builder: (context, state) {
         return GamePage(
-          cenarioMatrix: matriz.tail,
           listaDeAdjacencia: matriz.head,
         );
       }),

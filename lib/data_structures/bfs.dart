@@ -50,7 +50,9 @@ extension BreadthFirstSearchWithFinal<E> on Grafo<E> {
       // (S) pilha enqueue (s)
       queueVertices.enqueue(no);
       // mark visited (s)
-      verticeVisitados.add(no);
+      if (!verticeVisitados.contains(no)) {
+        verticeVisitados.add(no);
+      }
       // Enquanto S(pilha) is not empyt faça:
       while (!queueVertices.isEmpty) {
         // vertice u  que vai ser desempilhado
@@ -64,7 +66,9 @@ extension BreadthFirstSearchWithFinal<E> on Grafo<E> {
           if (!arestasVisitadas.contains(a)) {
             // marca como visitado o vertice e a aresta
             arestasVisitadas.add(a);
-            verticeVisitados.add(a.destino);
+            if (!verticeVisitados.contains(a.destino)) {
+              verticeVisitados.add(a.destino);
+            }
             // se a.destino == destino return visitado
             if (a.destino == destino) {
               return verticeVisitados;
