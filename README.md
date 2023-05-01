@@ -11,10 +11,17 @@
 MazeGraph é um software que busca mostrar visualmente o funcionamento dos algoritmos de Depth First Search(DFS) e Breadth First Search(BFS). A utilização dos algoritmos  se dá pela resolução de um labirinto 30x30, representado por uma matriz, onde cada posição (i,j) representa um nó do grafo. Assim sendo possivel utilizar a teoria dos grafos juntamente com seus algoritmos de buscas, o usuário poderá optar por rodar a DFS, rodar BFS ou achar o menor caminho até a saida do labirinto.
 
 ## Screenshots
-![screenshot1](https://user-images.githubusercontent.com/60429513/235533881-8e17f087-87bb-4b86-a457-ea68a83d2d2f.png)
-![screenshot2](https://user-images.githubusercontent.com/60429513/235533880-91b3c0bc-a25a-4ff5-b3f3-82f0481294c4.png)
-![screenshot3](https://user-images.githubusercontent.com/60429513/235533888-8dc59ff8-1228-4f5b-a40c-171f6de217ec.png)
-![screenshot4](https://user-images.githubusercontent.com/60429513/235533886-f0dcf0d1-4113-4f8b-99db-cf5554a551ad.png)
+
+Descrição                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://user-images.githubusercontent.com/60429513/235533881-8e17f087-87bb-4b86-a457-ea68a83d2d2f.png" alt="drawing" width="240"/> | 
+| <img src="https://user-images.githubusercontent.com/60429513/235533880-91b3c0bc-a25a-4ff5-b3f3-82f0481294c4.png" alt="drawing" width="240"/> |
+| <img src="https://user-images.githubusercontent.com/60429513/235533888-8dc59ff8-1228-4f5b-a40c-171f6de217ec.png" alt="drawing" width="240"/> | 
+| <img src="https://user-images.githubusercontent.com/60429513/235533886-f0dcf0d1-4113-4f8b-99db-cf5554a551ad.png" alt="drawing" width="240"/> | 
+
+## Video de apresetação
+
+<iframe width="300" height="200" src="https://www.youtube.com/watch?v=SzvQlCdPtmc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Instalação 
 **Linguagem**: Dart<br>
