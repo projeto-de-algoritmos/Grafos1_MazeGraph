@@ -39,13 +39,6 @@ class ListaDeAdjacencia<E> implements Grafo<E> {
 
   /// Para obter as arestas, caso seja nulo retorna [ ]
   List<Aresta<E>> obterArestas(Vertice<E> vertice) {
-    late List<Aresta<E>> curentAresta;
-    final conect = conecoes.forEach((key, value) {
-      if (key == vertice) {
-        curentAresta = value;
-        /* print("Current Aresta: $curentAresta"); */
-      }
-    });
     return conecoes[vertice] ?? [];
   }
 
@@ -71,7 +64,6 @@ class ListaDeAdjacencia<E> implements Grafo<E> {
     // adicionamos a aresta com base no vertice de inicio -> destino
     conecoes[inicio]?.add(Aresta(inicio: inicio, destino: destino, peso: peso));
 
-    /* print(conecoes); */
     // Caso o Grafo seja não direcionado add aresta destino -> inicio
     if (tipoDeAresta == TipoDeAresta.naoDirecionado) {
       conecoes[destino]

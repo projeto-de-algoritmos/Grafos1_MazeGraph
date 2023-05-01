@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///Classe Alternativa para GridView.Builder()
 class PixelPainter extends CustomPainter {
   final List<List<Color>> pixelMatrix;
 
@@ -28,7 +29,6 @@ class PixelPainter extends CustomPainter {
     }
   }
 
-  //Todo: sempre que o personagem mudar de posição é preciso repintar
   @override
   bool shouldRepaint(PixelPainter oldDelegate) => true;
 }

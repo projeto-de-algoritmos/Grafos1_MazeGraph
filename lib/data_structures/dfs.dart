@@ -3,13 +3,16 @@ import 'package:app/data_structures/pilha.dart';
 import 'package:app/data_structures/vertices.dart';
 
 extension DepthFirstSearch<E> on Grafo<E> {
-  List<Vertice<E>> depthFirstSearch(Vertice<E> source) {
+  List<Vertice<E>> depthFirstSearch(
+    Vertice<E> inicio,
+    Vertice<E> destino,
+  ) {
     final stack = StackList<Vertice<E>>();
     final pushed = <Vertice<E>>{};
     final visited = <Vertice<E>>[];
-    stack.push(source);
-    pushed.add(source);
-    visited.add(source);
+    stack.push(inicio);
+    pushed.add(inicio);
+    visited.add(inicio);
 
     loop:
     while (stack.isNotEmpty) {

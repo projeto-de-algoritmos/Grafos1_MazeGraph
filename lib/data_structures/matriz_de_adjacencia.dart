@@ -28,7 +28,6 @@ class MatrixDeAdjacencia<E> implements Grafo<E> {
     }
   }
 
-  ///TODO? dúvida porque preencher isso com nulll nos pesos??
   @override
   Vertice<E> criarVertice(E dado, int IndexX, int IndexY) {
     final vertice = Vertice(

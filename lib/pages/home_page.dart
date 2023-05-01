@@ -8,8 +8,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).cardColor,
         title: const Center(
-          child: Text("Home Page"),
+          child: Text("MAZE GRAPH"),
         ),
       ),
       body: Column(
@@ -21,7 +22,18 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 GoRouter.of(context).push("/game");
               },
-              child: const Text("Jogar"),
+              child: SizedBox(
+                height: 40,
+                width: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Icon(Icons.play_arrow_sharp),
+                    Text("Jogar"),
+                  ],
+                ),
+              ),
             ),
           )
         ],

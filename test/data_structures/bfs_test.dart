@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:app/data_structures/bfs.dart';
 import 'package:app/data_structures/lista_de_adjacencia.dart';
 import 'package:app/data_structures/vertices.dart';
