@@ -147,8 +147,7 @@ void main() {
 
     print("___________________BFS____________________");
 
-    final result =
-        await listaDeAdjacencia.breadthFirstSearchWithFinal(character, ganhou);
+    final result = await listaDeAdjacencia.bfs(character, ganhou);
     print("BFS: $result");
 
     /* print(listaDeAdjacencia.toString()); */

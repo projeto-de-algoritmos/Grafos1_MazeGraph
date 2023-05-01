@@ -19,4 +19,9 @@ class Aresta<E> {
     required this.destino,
     this.peso,
   });
+
+  @override
+  String toString() {
+    return "Inicio: ${inicio.toString()} -> Destino: ${destino.toString()}";
+  }
 }

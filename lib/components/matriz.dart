@@ -33,8 +33,6 @@ Tuple2<ListaDeAdjacencia<Color>, List<List<Color>>>
       List.generate(linhas, (integer) => List.filled(colunas, parede));
 
   //! Gerando lista de obstáculos
-
-  //! Preenchendo matriz de cores com obstáculos aleatórios
   for (var element in listaDeObstaculos) {
     matriz[element.value1][element.value2] = parede;
   }
@@ -61,6 +59,7 @@ Tuple2<ListaDeAdjacencia<Color>, List<List<Color>>>
       for (int coluna = 1; coluna < colunas - 1; coluna++) {
         if (matriz[linha][coluna] == parede) continue;
         // olhando pra linha de baixo
+        //!entra aqui
         if (matriz[linha][coluna] == matriz[linha + 1][coluna]) {
           // olhando pra linha de direita
           final verticeDeInicio = listaDeAdjacencia.vertices.firstWhere(
@@ -71,6 +70,7 @@ Tuple2<ListaDeAdjacencia<Color>, List<List<Color>>>
           listaDeAdjacencia.addAresta(
               inicio: verticeDeInicio, destino: verticeDeDestino);
         }
+        //!entra aqui
         if (matriz[linha][coluna] == matriz[linha][coluna + 1]) {
           final verticeDeInicio = listaDeAdjacencia.vertices.firstWhere(
               (vertice) => vertice.indexX == linha && vertice.indexY == coluna);
@@ -103,15 +103,11 @@ Tuple2<ListaDeAdjacencia<Color>, List<List<Color>>>
       }
     }
   } catch (e) {
-    print(e);
+    /* print(e); */
   }
 
   matriz[posicaoInicial.head][posicaoInicial.tail] = Colors.red;
-  listaDeAdjacencia.updateVertice(
-      Tuple2(posicaoInicial.head, posicaoInicial.tail), Colors.red);
   matriz[posicaoFinal.tail][posicaoFinal.tail] = Colors.yellow;
-  listaDeAdjacencia.updateVertice(
-      Tuple2(posicaoFinal.head, posicaoFinal.tail), Colors.yellow);
 
   print(
       "Quatidade de arestas: ${listaDeAdjacencia.quatidadeDeAresta()} Quantidade de nós: ${listaDeAdjacencia.vertices.length}");

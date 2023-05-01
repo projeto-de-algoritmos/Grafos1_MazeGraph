@@ -1,4 +1,3 @@
-
 abstract class Queue<E> {
   bool enqueue(E element);
   E? dequeue();
@@ -13,6 +12,8 @@ class QueueList<E> implements Queue<E> {
 
   @override
   bool get isEmpty => _list.isEmpty;
+
+  bool get isNotEmpty => _list.isNotEmpty;
 
   @override
   E? get peek => (isEmpty) ? null : _list.first;
